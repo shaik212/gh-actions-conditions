@@ -67,7 +67,6 @@ jobs:
           path: dist
   deploy:
     needs: build
-    uses: ./.github/workflows/called-reuse.yml
     runs-on: ubuntu-latest
     steps:
       - name: Get build artifacts
@@ -78,6 +77,9 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
+  deploy-2:
+    needs: deploy
+    uses: ./.github/workflows/called-reuse.yml
   output:
     needs: [lint, deploy]
     if: failure()
