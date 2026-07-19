@@ -80,6 +80,8 @@ jobs:
   deploy-2:
     needs: deploy
     uses: ./.github/workflows/called-reuse.yml
+    with:
+      artifact-name: dist-files
   output:
     needs: [lint, deploy]
     if: failure()

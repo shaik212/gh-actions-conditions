@@ -1,8 +1,21 @@
 name: Workflow to be called on deploy
-on: workflow_call
+on: 
+  workflow_call:
+    inputs:
+      artifact-name:
+      description: the name deployeable artifact
+      required: false
+      default: false
+      type: string
 jobs:
   resue:
     runs-on: ubuntu-latest
     steps:
+      - name: get code
+        uses: actions/checkout@v7
+      - name: download artifact 
+        uses: actions/download@v7
+        with:
+          name: ${{ inputs.artifact-name }}
       - name: output information
         run: echo " the workflow called "
