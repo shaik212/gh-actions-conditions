@@ -1,0 +1,20 @@
+name: Matrix job
+on: push
+job:
+  build:
+    strategy:
+      matrix:
+        node-veriosns: [12, 14, 16]
+        operating-system: [ubuntu-lates, windows-latest]
+    runs-on: ${{ matrix.operating-system }}
+    steps:
+      - name: Get code  
+        uses: actions/checkout@v3
+      - name: Get node js 
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-veriosns }}
+      - name: install dependencies  
+        run: npm run install
+      - name: buils project
+        run: npm run build
