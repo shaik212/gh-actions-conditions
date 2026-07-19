@@ -6,6 +6,12 @@ jobs:
       matrix:
         node-veriosns: [12, 14, 16]
         operating-system: [ubuntu-lates, windows-latest]
+        include:
+          - node-version: 18
+            operating-system: windows-latest
+        exclude:
+          - node-version: 12
+            operating-system: ubuntu-latest
     runs-on: ${{ matrix.operating-system }}
     steps:
       - name: Get code  
