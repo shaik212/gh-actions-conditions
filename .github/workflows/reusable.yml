@@ -67,7 +67,7 @@ jobs:
           path: dist
   deploy:
     needs: build
-    uses: ./.github/workflows/called-resue.yml
+    uses: ./.github/workflows/called-reuse.yml
     runs-on: ubuntu-latest
     steps:
       - name: Get build artifacts
