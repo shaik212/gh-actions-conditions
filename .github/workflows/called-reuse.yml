@@ -1,0 +1,8 @@
+name: Workflow to be called on deploy
+on: workflow_call
+jobs:
+  resue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: output information
+        run: echo " the workflow called "
